@@ -1,104 +1,187 @@
-# Docker Image - PHP8.1-fpm - Magento2.4.4 till Magento2.4.6
+<div align="center">
 
-## Description
+  <h1>HK2 Magento PHP 8.1 FPM</h1>
+  <b>PHP 8.1 FPM Docker environment specifically optimized for Magento 2.4.4 till Magento 2.4.6</b><br><br>
 
-This Docker image is built on PHP 8.1-FPM and includes all the essential extensions required for running Magento 2.4.4 till Magento 2.4.6. Additionally, it comes pre-configured with tools like CURL, Git, Magento Cloud CLI, and more, ensuring a smooth development experience.
+  <img src="https://img.shields.io/badge/version-3.0-blue?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/badge/Magento-2.3.x--2.4.3-blue?style=flat-square" alt="Magento Version">
+  <img src="https://img.shields.io/badge/PHP-8.1-blue?style=flat-square" alt="PHP Version">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/license-OSL--3.0-green?style=flat-square" alt="License">
+  <br>
+  <a href="https://github.com/basantmandal/docker-magento2-php81"><img src="https://img.shields.io/badge/github-repo-blue?logo=github&style=flat-square" alt="Github Repository"></a>
+  <a href="https://www.basantmandal.in/"><img src="https://img.shields.io/badge/Website-000?style=flat-square&logo=ko-fi&logoColor=white" alt="Website"></a>
+  <a href="https://www.linkedin.com/in/basantmandal/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  <a href="mailto:support@basantmandal.in"><img src="https://img.shields.io/badge/Email-support%40basantmandal.in-ea4335?style=flat-square&logo=gmail&logoColor=white" alt="Email"></a>
+</div>
 
-**🐞 Warning**: This quick setup is only intended for development environments.
+---
 
-## 🛠️ Some of the extension added in this image for Magento Compatibility are
+## 📄 Overview
 
--   bcmath
--   calendar
--   exif
--   gd
--   intl
--   mysqli
--   opcache
--   pdo_mysql
--   soap
--   sockets
--   xsl
--   zip
+The HK2 Magento PHP 8.1 FPM project provides a highly optimized, fully configured PHP 8.1 FPM Docker image specifically designed to run Magento 2.4.4 till Magento 2.4.6 environments. It includes all necessary PHP extensions, Composer 1.x, IonCube loaders (with automatic architecture detection for Mac compatibility), and built-in MSMTP support for email routing.
 
-## 🚀 Other Runtime
+### 👥 Who is this for?
 
-Java Development Kit v15 has been added to support any Java Program to run under this Image.
+- Magento 2 Backend and Frontend Developers
+- DevOps Engineers managing Magento environments
+- E-commerce technical agencies running legacy Magento 2 versions on modern hardware (including Apple Silicon)
 
-## 🚀 Required Arguments
+---
 
--   USER
--   GIT_USER_NAME
--   GIT_USER_EMAIL_ID
--   EMAIL_NO_REPLY
+## ✨ Key Features
 
-## 💰 Account & Pricing
+| Feature | Details |
+| :--- | :--- |
+| 💻 **Multi-Architecture Support** | Fully compatible with standard servers (`linux/amd64`) and Apple Silicon Macs/ARM devices (`linux/arm64`) with automated IonCube loader switching. Images are built natively via Docker Buildx. |
+| 📦 **Pre-configured Extensions** | Includes essential Magento 2 PHP extensions: bcmath, gd, intl, pdo_mysql, soap, xsl, zip, redis, and optional xdebug. |
+| 🧱 **Developer Tools** | Comes pre-installed with Composer 1.10.x, image optimization tools (jpegoptim, optipng), Git, and msmtp for email interception. |
+| 🔐 **Optimized Configurations** | Pre-tuned `php.ini` with 2GB memory limit, increased execution times, and optimal upload sizes for heavy Magento operations. |
 
-This is a Open Source - Free to use Docker Image/Container. No charge or any fee is there to use it.
+---
 
-## 🚀 Sample Docker Compose
+## 📋 System Requirements
 
-[https://github.com/basantmandal/Magento_Docker_Compose](https://github.com/basantmandal/Magento_Docker_Compose)
+| Requirement | Minimum Version |
+| :--- | :--- |
+| **Docker Engine** | 20.10.0+ |
+| **Docker Compose** | 2.0.0+ |
+| **Hardware** | 4GB RAM minimum (8GB recommended for Magento 2) |
 
-## 🚀 How to use it for Magento
+> ⚠ **Note:** This container requires an external web server (Nginx/Apache) to proxy requests to the FPM daemon on port 9000.
 
-[https://github.com/basantmandal/Magento247_Docker_Compose](https://github.com/basantmandal/Magento247_Docker_Compose)
+---
 
-## Compatibility
+## 🚀 Installation & Usage
 
-This Image has been tested on Ubuntu 18/20/22. We hope it should work fine in Windows and MacOS. In case of any issues you can file it at [https://github.com/basantmandal/Docker_HK2_Magento_PHP8.1/issues](https://github.com/basantmandal/Docker_HK2_Magento_PHP8.1/issues)
+### 1. Using Pre-built Image from Docker Hub (Recommended)
 
-## 📫 Support
+The simplest way to use this environment is to pull the pre-built, multi-architecture image directly from Docker Hub:
 
-For support or any bug report or changes mail me at - <support@hashtagkitto.co.in>
+```bash
+docker pull basantmandal/hk2-php8.1-fpm:latest
+```
 
-## 🐞 Bug Report
+*(You can also pin to a specific version like `:3.0`)*
 
-Please open an [issue](https://github.com/basantmandal/Docker_HK2_Magento_PHP8.1/issues) on GitHub.
+### 2. Using Docker Compose
 
-When filing a bug remember that the better written the bug is, the more likely it is to be fixed.
+Add the following service to your `docker-compose.yml`:
 
-You can also reach us at <support@hashtagkitto.co.in>
+```yaml
+services:
+  php:
+    image: basantmandal/hk2-php8.1-fpm:3.0
+    build:
+      context: .
+      args:
+        - INSTALL_XDEBUG=false  # Set to true to install Xdebug
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "9000:9000"
+```
 
-## 🍰 Contribution Guidelines 💖
+### 3. Local Development & Testing
 
-Contributions are welcome! If you’d like to contribute to this project:
+If you need to build the image locally or modify configurations:
 
--   Fork the repository.
--   Create a new branch (git checkout -b feature/your-feature-name).
--   Make your changes and commit them (git commit -am 'Add new feature').
--   Push to the branch (git push origin feature/your-feature-name).
--   Open a pull request.
+**Clone the repository:**
 
-**Please Note** :- I may be a bit delayed in responding or slow in responding due to low amount of free time. I apologize for the inconvenience and I appreciate your patience
+```bash
+git clone https://github.com/basantmandal/docker-magento2-php81.git
+cd docker-magento2-php81
+```
 
-## 🤝 Consent
+**Build the image locally (no cache):**
 
-By using any Product/Module/Application/Docker Image/Container/Compose, etc from Basant Mandal A.K.A (HK2 - Hash Tag Kitto), you hereby consent to our disclaimer and agree to its terms.
+```bash
+./local_build.sh
+```
 
-## 📢 Disclaimer
+**Run Automated Validation Tests:**
+Ensure PHP version, required extensions, Composer, and IonCube loaded correctly within the container:
 
-> **Basant Mandal (HK2 - Hash Tag Kitto)** does not make any warranties about the completeness, reliability and accuracy of this image or its related products. Any action you take upon the information you find here is strictly at your own risk.
+```bash
+./scripts/03.test.sh
+```
 
-> **Basant Mandal (HK2 - Hash Tag Kitto)** will not be liable for any losses and/or damages in connection with the use of our website.
+**Push to Docker Hub (Maintainers):**
 
-## 💖Like my work? Help Us
+```bash
+./scripts/local_upload_image.sh
+```
 
-Please rate my project or give some stars at [https://github.com/basantmandal/Docker_HK2_Magento_PHP8.1/stargazers](https://github.com/basantmandal/Docker_HK2_Magento_PHP8.1/stargazers). You can also contribute to make my Open Source Contribution more frequent and help others - [https://www.buymeacoffee.com/basantmandal](https://www.buymeacoffee.com/basantmandal) or [https://www.basantmandal.in/buymecoffee](https://www.basantmandal.in/buymecoffee)
+> ⚠ **Security Warning:** Do not expose the FPM port (9000) publicly to the internet. Keep it internal to the Docker network.
 
-## 📫 Feedback
+---
 
-If you have any feedback, please reach out to us at <support@hashtagkitto.co.in>
+## ⚙️ Configuration
 
-## 🔗 Links:
+| Service | Version | Purpose |
+| :--- | :--- | :--- |
+| **PHP FPM** | 8.1.x | Core application processing for Magento. |
+| **Composer** | 2.x | Dependency management optimized for older Magento versions. |
+| **IonCube** | Latest | Required for running encrypted third-party extensions. |
 
-Feel free to reach me through the below handles if you'd like to contact me.
+---
 
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.basantmandal.in/)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/basantmandal/)
+## 🔒 Content Security Policy (CSP)
 
-## 📜 License:
+This image relies on your web server (Nginx/Apache) or Magento application to configure and enforce Content Security Policies. Ensure your web server passes appropriate CSP headers.
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+---
+
+## 🔐 Privacy & GDPR
+
+This container image does not independently collect, store, or transmit any personally identifiable information (PII). All log outputs are written to standard output (`stdout`/`stderr`) and managed locally by your Docker daemon.
+
+---
+
+## 📚 Documentation
+
+| Document | Purpose |
+| :--- | :--- |
+| [**SECURITY.md**](./SECURITY.md) | Security vulnerability reporting policy and guidelines. |
+| [**CONTRIBUTING.md**](./.github/CONTRIBUTING.md) | Instructions and rules for contributing to the repository. |
+| [**Dockerfile**](./Dockerfile) | Source configurations for the Docker container build. |
+
+---
+
+## ⚠️ Known Limitations
+
+- Running PHP 8.1 means this environment is meant for **legacy** operations and should not be used for new Magento 2.4.4+ projects, which require PHP 8.1+.
+- Xdebug is turned off by default (`INSTALL_XDEBUG=false`) to prevent performance penalties in production-like environments.
+
+---
+
+## 🤝 Contributing
+
+We actively welcome contributions! Please read our [Contributing Guidelines](./.github/CONTRIBUTING.md) to understand how to submit bug reports, feature requests, and pull requests.
+
+---
+
+## 📄 License
+
+This project is licensed under the OSL 3.0 License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## ⚖️ Disclaimer
+
+The author provides this Docker image "as is" without any warranties. Users are responsible for ensuring that running this environment complies with their internal security and software requirements.
+
+---
+
+<div align="center">
+  <b>Basant Mandal</b><br>
+  <i>Full Stack Developer</i><br><br>
+
+  <a href="https://www.basantmandal.in/"><img src="https://img.shields.io/badge/Website-000?style=flat-square&logo=ko-fi&logoColor=white" alt="Website"></a>
+  <a href="https://www.linkedin.com/in/basantmandal/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  
+  <br>
+
+  ---
+  > *Copyright © 2026 Basant Mandal. All rights reserved.*
+</div>
