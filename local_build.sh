@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-image="basantmandal/hk2-php8.1-fpm"
+image="basantmandal/hk2-php7.4-fpm"
 version="2.2"
 
 result=$(docker images -q ${image})
