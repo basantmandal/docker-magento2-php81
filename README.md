@@ -1,10 +1,10 @@
 <div align="center">
 
   <h1>HK2 Magento PHP 8.1 FPM</h1>
-  <b>PHP 8.1 FPM Docker environment specifically optimized for Magento 2.4.4 till Magento 2.4.6</b><br><br>
+  <b>PHP 8.1 FPM Docker environment specifically optimized for Magento 2.4.6 and above.</b><br><br>
 
-  <img src="https://img.shields.io/badge/version-3.0-blue?style=flat-square" alt="Version">
-  <img src="https://img.shields.io/badge/Magento-2.3.x--2.4.3-blue?style=flat-square" alt="Magento Version">
+  <img src="https://img.shields.io/badge/version-2.0-blue?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/badge/Magento-2.4.6-blue?style=flat-square" alt="Magento Version">
   <img src="https://img.shields.io/badge/PHP-8.1-blue?style=flat-square" alt="PHP Version">
   <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker">
   <img src="https://img.shields.io/badge/license-OSL--3.0-green?style=flat-square" alt="License">
@@ -19,7 +19,7 @@
 
 ## 📄 Overview
 
-The HK2 Magento PHP 8.1 FPM project provides a highly optimized, fully configured PHP 8.1 FPM Docker image specifically designed to run Magento 2.4.4 till Magento 2.4.6 environments. It includes all necessary PHP extensions, Composer 1.x, IonCube loaders (with automatic architecture detection for Mac compatibility), and built-in MSMTP support for email routing.
+The HK2 Magento PHP 8.1 FPM project provides a highly optimized, fully configured PHP 8.1 FPM Docker image specifically designed to run Magento 2.4.6 and above environments. It includes all necessary PHP extensions, Composer 2.x, IonCube loaders (with automatic architecture detection for Mac compatibility), and built-in MSMTP support for email routing.
 
 ### 👥 Who is this for?
 
@@ -35,7 +35,7 @@ The HK2 Magento PHP 8.1 FPM project provides a highly optimized, fully configure
 | :--- | :--- |
 | 💻 **Multi-Architecture Support** | Fully compatible with standard servers (`linux/amd64`) and Apple Silicon Macs/ARM devices (`linux/arm64`) with automated IonCube loader switching. Images are built natively via Docker Buildx. |
 | 📦 **Pre-configured Extensions** | Includes essential Magento 2 PHP extensions: bcmath, gd, intl, pdo_mysql, soap, xsl, zip, redis, and optional xdebug. |
-| 🧱 **Developer Tools** | Comes pre-installed with Composer 1.10.x, image optimization tools (jpegoptim, optipng), Git, and msmtp for email interception. |
+| 🧱 **Developer Tools** | Comes pre-installed with Composer 2.x, image optimization tools (jpegoptim, optipng), Git, and msmtp for email interception. |
 | 🔐 **Optimized Configurations** | Pre-tuned `php.ini` with 2GB memory limit, increased execution times, and optimal upload sizes for heavy Magento operations. |
 
 ---
@@ -59,25 +59,34 @@ The HK2 Magento PHP 8.1 FPM project provides a highly optimized, fully configure
 The simplest way to use this environment is to pull the pre-built, multi-architecture image directly from Docker Hub:
 
 ```bash
+docker pull basantmandal/hk2-php8.1-fpm
+```
+
+or
+
+```bash
 docker pull basantmandal/hk2-php8.1-fpm:latest
 ```
 
-*(You can also pin to a specific version like `:3.0`)*
+> Always use the latest tag or don't use any tag, so it gets the latest one.
 
 ### 2. Using Docker Compose
 
 Add the following service to your `docker-compose.yml`:
 
+> Remember - /php/conf.d/99-custom.ini is not added to the image, so you need to create the file in your local directory if you need it, else remove it from the docker-compose.yml file.
+
 ```yaml
 services:
   php:
-    image: basantmandal/hk2-php8.1-fpm:3.0
+    image: basantmandal/hk2-php8.1-fpm
     build:
       context: .
       args:
         - INSTALL_XDEBUG=false  # Set to true to install Xdebug
     volumes:
       - ./src:/var/www/html
+      - ./php/conf.d/99-custom.ini:/usr/local/etc/php/conf.d/99-custom.ini
     ports:
       - "9000:9000"
 ```
@@ -103,7 +112,7 @@ cd docker-magento2-php81
 Ensure PHP version, required extensions, Composer, and IonCube loaded correctly within the container:
 
 ```bash
-./scripts/03.test.sh
+./scripts/test.sh
 ```
 
 **Push to Docker Hub (Maintainers):**
@@ -121,7 +130,7 @@ Ensure PHP version, required extensions, Composer, and IonCube loaded correctly 
 | Service | Version | Purpose |
 | :--- | :--- | :--- |
 | **PHP FPM** | 8.1.x | Core application processing for Magento. |
-| **Composer** | 2.x | Dependency management optimized for older Magento versions. |
+| **Composer** | 2 | Dependency management optimized for older Magento versions. |
 | **IonCube** | Latest | Required for running encrypted third-party extensions. |
 
 ---
@@ -150,7 +159,7 @@ This container image does not independently collect, store, or transmit any pers
 
 ## ⚠️ Known Limitations
 
-- Running PHP 8.1 means this environment is meant for **legacy** operations and should not be used for new Magento 2.4.4+ projects, which require PHP 8.1+.
+- Running PHP 8.1 means this environment is meant for **modern** operations and should be used for Magento 2.4.6+ projects. For legacy projects requiring older PHP versions, please use the appropriate legacy image.
 - Xdebug is turned off by default (`INSTALL_XDEBUG=false`) to prevent performance penalties in production-like environments.
 
 ---
@@ -163,7 +172,7 @@ We actively welcome contributions! Please read our [Contributing Guidelines](./.
 
 ## 📄 License
 
-This project is licensed under the OSL 3.0 License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the OSL 3.0 License. See the [LICENSE.txt](LICENSE.txt) file for details.
 
 ---
 
@@ -179,7 +188,9 @@ The author provides this Docker image "as is" without any warranties. Users are 
 
   <a href="https://www.basantmandal.in/"><img src="https://img.shields.io/badge/Website-000?style=flat-square&logo=ko-fi&logoColor=white" alt="Website"></a>
   <a href="https://www.linkedin.com/in/basantmandal/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
-  
+<a href="mailto:support@basantmandal.in">
+    <img src="https://img.shields.io/badge/Email-support%40basantmandal.in-blue?style=flat-square&logo=gmail" alt="Email">
+</a>
   <br>
 
   ---

@@ -1,16 +1,18 @@
 <div align="center">
-  <h1>Contributing to HK2 Magento PHP 8.1 FPM</h1>
-  <b>Guidelines for contributing to the repository</b><br><br>
+  <h1>Contributing to Docker HK2 Magento PHP 8.1</h1>
+  <b>Guidelines for contributing to the Docker environment for Magento 2 with PHP 8.1.</b>
 
-  <img src="https://img.shields.io/badge/version-3.0-blue?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/badge/version-3.0.0-blue?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/badge/Magento-2.4.8-EE672F?style=flat-square&logo=magento&logoColor=white" alt="Magento Version">
+  <img src="https://img.shields.io/badge/PHP-8.1+-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP Version">
   <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker">
-  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License">
+  <img src="https://img.shields.io/badge/license-OSL--3.0-green?style=flat-square" alt="License">
 
   <br>
 
   <a href="https://www.basantmandal.in/"><img src="https://img.shields.io/badge/Website-000?style=flat-square&logo=ko-fi&logoColor=white" alt="Website"></a>
   <a href="https://www.linkedin.com/in/basantmandal/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
-  <a href="https://github.com/basantmandal/docker-magento2-php81"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github" alt="GitHub"></a>
+  <a href="https://github.com/basantmandal/Docker_HK2_Magento_php8.1"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github" alt="GitHub"></a>
   <a href="mailto:support@basantmandal.in"><img src="https://img.shields.io/badge/Email-support%40basantmandal.in-blue?style=flat-square&logo=gmail" alt="Email"></a>
 </div>
 
@@ -18,44 +20,45 @@
 
 ## 👋 Introduction
 
-First off, thank you for considering contributing to this project! It's people like you that make it a great tool for everyone. These guidelines are meant to help you navigate the process.
+Thank you for considering contributing to Docker_HK2_Magento_php8.1! This document provides guidelines and instructions for contributing.
 
 ---
 
 ## 🐛 Reporting Bugs
 
-Bugs are tracked as GitHub issues. When creating an issue, please use the provided Bug Report template and provide as much detail as possible to help us understand and reproduce the problem.
+If you find a bug, please help us by reporting it using the provided bug report template. Ensure you include:
 
-- **Use a clear and descriptive title** for the issue.
-- **Provide specific steps to reproduce** the issue.
-- **Include version information** of the software and environment you are using.
+- A clear and descriptive title.
+- Steps to reproduce the bug.
+- Expected and actual behavior.
+- Details about your environment (Docker version, OS, etc.).
 
 ---
 
 ## 💡 Suggesting Enhancements
 
-Enhancement suggestions are also tracked as GitHub issues. Before creating an enhancement suggestion, please check if one already exists.
+We welcome suggestions for new features or improvements. When suggesting an enhancement, please explain:
 
-- **Use a clear and descriptive title** for the issue.
-- **Provide a step-by-step description** of the suggested enhancement.
-- **Explain why this enhancement would be useful** to most users.
+- The problem it solves or the value it adds.
+- A proposed implementation or examples, if possible.
 
 ---
 
 ## 🛠️ Pull Requests
 
-1. **Fork the repository** and create your branch from `main`.
-2. **Make your changes** and test them thoroughly.
-3. **Ensure your code follows the established coding standards**.
-4. **Issue that PR!** Use the provided Pull Request template and fill in all the details.
+1. Fork the repository and create your branch from `main`.
+2. Make your changes and ensure they are well-documented.
+3. Test your changes locally in the Docker environment.
+4. Open a pull request using the provided pull request template.
+5. Address any feedback from reviewers.
 
 ---
 
 ## 🧑‍💻 Coding Standards
 
-- Ensure any Dockerfile changes are optimized to reduce layers and image size.
-- Document any changes or additions to environment variables.
-- Maintain consistency with the existing code style.
+Please follow best practices for Docker, Shell scripting, and any specific coding standards relevant to Magento 2 and PHP. Ensure your Dockerfiles are optimized and follow security best practices.
+
+---
 
 <div align="center">
   <b>Basant Mandal</b><br>
@@ -63,7 +66,7 @@ Enhancement suggestions are also tracked as GitHub issues. Before creating an en
 
   <a href="https://www.basantmandal.in/"><img src="https://img.shields.io/badge/Website-000?style=flat-square&logo=ko-fi&logoColor=white" alt="Website"></a>
   <a href="https://www.linkedin.com/in/basantmandal/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
-  
+
   <br>
 
   ---

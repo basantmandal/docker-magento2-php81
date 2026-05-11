@@ -12,46 +12,42 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within this project, please send an email to `support@basantmandal.in`. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this project, please report it privately.
+Do not open a public issue.
 
-Please include the following details in your report:
-- A description of the vulnerability and its impact.
-- Steps to reproduce the issue.
-- Any potential mitigation or solutions you may have identified.
-
-We aim to acknowledge receipt of your vulnerability report within 48 hours and provide an update on the resolution timeline.
+Please send an email to `support@basantmandal.in` with the details of the vulnerability.
+Include steps to reproduce, potential impact, and any other relevant information.
+We will respond to your report as quickly as possible.
 
 ## What to Expect
 
-1. **Acknowledgment:** We will confirm receipt of your report.
-2. **Investigation:** We will investigate the issue and determine its validity and impact.
-3. **Patching:** If validated, we will develop and test a patch.
-4. **Disclosure:** Once a patch is available, we will publish a security advisory and notify users.
-
-All communication regarding the vulnerability will remain confidential until a patch is released.
+1. We will acknowledge receipt of your report within 48 hours.
+2. We will investigate the issue and determine its validity and severity.
+3. If confirmed, we will develop a patch and release a new secure version.
+4. We maintain confidentiality until the patch is released.
 
 ## Scope
 
-This security policy covers the code and configurations provided directly within this repository. It does not cover:
-- Vulnerabilities in third-party dependencies (these should be reported to their respective maintainers).
-- Insecure deployments or configurations by end-users.
+This security policy applies to the Docker configurations and scripts provided in this repository. Vulnerabilities in Magento, PHP, or other third-party software should be reported to their respective maintainers, although we will do our best to update our configurations to mitigate such issues if possible.
 
 ## Security Best Practices for Users
 
-- Do not expose sensitive environment variables or credentials.
-- Use a secure network configuration (e.g., UFW rules) to restrict access to services.
-- Regularly update to the latest version of this image and its underlying dependencies.
+- **Environment Variables:** Never commit sensitive information (like passwords or API keys) to the repository. Use `.env` files and ensure they are added to `.gitignore`.
+- **Network Security:** Restrict access to exposed ports (e.g., using UFW or firewall rules) and do not expose sensitive services directly to the public internet without proper authentication and encryption.
+- **Regular Updates:** Keep your Docker images, Magento installation, and server OS updated with the latest security patches.
 
 ## Contact Information
 
 | Purpose | Contact |
 | :--- | :--- |
-| Security Reports | support@basantmandal.in |
-| General Support | support@basantmandal.in |
+| Security Reports | <support@basantmandal.in> |
+| General Inquiries | <support@basantmandal.in> |
 
 ## Acknowledgment
 
-We deeply appreciate the efforts of security researchers and the wider community in helping to keep this project secure.
+We deeply appreciate the efforts of the security community in helping us keep this project safe and secure.
+
+---
 
 <div align="center">
   <b>Basant Mandal</b><br>
