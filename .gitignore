@@ -13,6 +13,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+*:Zone.Identifier
 
 # Build, Log, and Cache Files
 *.log
