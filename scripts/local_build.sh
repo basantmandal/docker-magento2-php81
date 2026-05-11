@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-set -e  # fail fast
+set -euo pipefail
 
 image="basantmandal/hk2-php8.1-fpm"
-version="3.0"
+version="3.1.0"
 tag="${image}:${version}"
 
 echo "🔍 Checking for existing image..."
@@ -14,7 +14,8 @@ if docker image inspect "$tag" > /dev/null 2>&1; then
 fi
 
 echo "🏗️  Building image locally (no cache)..."
-docker build --no-cache -t "$tag" ../ | tee docker_build.log
+
+docker build --no-cache -t "$tag" ../ 2>&1 | tee docker_build.log
 
 echo "✅ Build complete: $tag"
 echo "👉 You can now test locally before pushing to Docker Hub"

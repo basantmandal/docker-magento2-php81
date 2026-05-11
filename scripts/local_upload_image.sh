@@ -3,7 +3,7 @@
 set -euo pipefail
 
 IMAGE="basantmandal/hk2-php8.1-fpm"
-VERSION="3.0"
+VERSION="3.1.0"
 TAG="${IMAGE}:${VERSION}"
 
 echo "🔍 Checking if image exists locally..."
