@@ -8,7 +8,7 @@ LABEL org.opencontainers.image.title="HK2 Magento PHP 8.1 FPM" \
       org.opencontainers.image.url="https://github.com/basantmandal/docker-magento2-php81" \
       org.opencontainers.image.documentation="https://github.com/basantmandal/docker-magento2-php81#readme" \
       org.opencontainers.image.licenses="MIT" \
-      org.opencontainers.image.created="2026-05-12T00:00:00Z" \
+      org.opencontainers.image.created="2026-05-24T00:00:00Z" \
       org.opencontainers.image.revision="git-commit-sha"
 
 USER root
@@ -52,6 +52,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxslt1-dev \
     libbz2-dev \
     libsqlite3-dev \
+    libxml2-utils \
     zlib1g-dev \
     default-libmysqlclient-dev \
     jpegoptim optipng pngquant gifsicle \
